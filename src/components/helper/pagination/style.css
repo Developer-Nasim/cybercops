@@ -1,0 +1,62 @@
+.pgnt {
+    margin-left: auto;
+    margin-right: 0;
+    display: block;
+    width: max-content;
+    margin-top: 15px;
+    margin-bottom: 40px;
+    position: absolute;
+    bottom: 20px;
+    right: 0;
+}
+
+.pgnt ul {
+    display: flex;
+    align-items: center;
+}
+
+.pgnt ul li a,
+.pgnt ul li button {
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 15px; 
+    color: #FFFFFF; 
+    padding: 6px 12px;
+    clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 90%);
+    border-radius: 7px;
+    background: transparent;
+    position: relative;
+}
+
+.pgnt ul li a.active,
+.pgnt ul li button.ddxFPe {
+    background-color: #FF8F17;
+}
+
+.pgnt ul li button:hover{
+    background-color: transparent;
+}
+.pgnt ul li a.prev:before,
+.pgnt ul li a.nxt:after {
+    content: "<";
+    font-size: 18px;
+    font-family: monospace;
+    font-weight: 500;
+    position: relative;
+    top: 2px;
+    margin-right: 10px;
+}
+.pgnt ul li a.nxt:after{
+    content: ">";
+    margin-right: 0px;
+    margin-left: 10px;
+}
+.pgnt ul li:first-child button:first-child,
+.pgnt ul li:last-child button:last-child{
+    display: none;
+}
+.pgnt ul li:first-child button:last-child, 
+.pgnt ul li:last-child button:first-child {
+    font-family: monospace;
+    font-size: 18px;
+}

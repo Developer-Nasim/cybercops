@@ -1,0 +1,9 @@
+.congratulation {
+    text-align: center;
+    width: 100%;
+    padding: 50px;
+}
+
+.congratulation h3 {
+    color: #238636;
+}

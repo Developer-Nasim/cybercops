@@ -1,0 +1,87 @@
+stages:
+  - build
+  - package
+  - push
+  - deploy
+
+variables:
+  ARTIFACT_DIR: "./archive" # must be relative to the build directory - https://gitlab.com/gitlab-org/gitlab-foss/-/issues/15530
+  ARTIFACT_NAME: "cybercops-frontend"
+  STORAGE_DRIVER: "vfs"
+  BUILDAH_FORMAT: "docker"
+  APP_NAME_FRONTEND: cybercops-frontend-app
+
+default:
+  before_script:
+    - export TAG="${CI_COMMIT_TAG:-latest}" && echo $TAG # If the pipeline was triggered by a tag, use the tag value, otherwise use "latest"
+
+Build:
+  stage: build
+  image: bayesimpact/react-base
+  services:
+    - docker:dind
+  script:
+    - echo "Building Frontend..."
+    - "npm install --progress=false"
+    - npm run build
+    - echo "Frontend Build Complete!"
+  cache:
+    key: "$CI_COMMIT_SHA"
+    policy: push
+    paths:
+      - build
+  artifacts:
+    paths:
+      - build/static/*
+    expire_in: 1 week
+
+# Here, the goal is to tag the "main" branch as "latest"
+Package:
+  stage: "package"
+  image:
+    name: "quay.io/buildah/stable:v1.21.0"
+  script:
+    - "buildah bud -f Dockerfile -t ${CI_REGISTRY_IMAGE}:${TAG} ."
+    - "mkdir ${ARTIFACT_DIR}"
+    - "buildah push ${CI_REGISTRY_IMAGE}:${TAG} docker-archive:${ARTIFACT_DIR}/${ARTIFACT_NAME}:${TAG}"
+  artifacts:
+    name: "archive:${ARTIFACT_NAME}:${CI_JOB_ID}"
+    when: "on_success"
+    expire_in: "6h"
+    paths:
+      - "${ARTIFACT_DIR}/"
+  dependencies:
+    - "Build"
+
+Push:
+  stage: "push"
+  image:
+    name: "quay.io/buildah/stable:v1.21.0"
+  only:
+    - "tags"
+    - "main"
+  script:
+    - "buildah pull docker-archive:${ARTIFACT_DIR}/${ARTIFACT_NAME}"
+    - "echo $CI_REGISTRY_PASSWORD | buildah login -u $CI_REGISTRY_USER --password-stdin $CI_REGISTRY"
+    - "buildah push ${CI_REGISTRY_IMAGE}:${TAG}"
+  dependencies:
+    - "Package"
+
+Deploy & Release to Heroku:
+  stage: deploy
+  image: docker:20
+  services:
+    - docker:dind
+  only:
+    - main
+  script:
+    - echo "Deploying Frontendend..."
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - docker pull ${CI_REGISTRY_IMAGE}:${TAG}
+    - docker tag ${CI_REGISTRY_IMAGE}:${TAG} registry.heroku.com/$APP_NAME_FRONTEND/web
+    - docker login -u _ -p $HEROKU_API_KEY registry.heroku.com
+    - docker push registry.heroku.com/$APP_NAME_FRONTEND/web
+    - docker run -e HEROKU_API_KEY=$HEROKU_API_KEY wingrunr21/alpine-heroku-cli:7.4.11 container:release web -a $APP_NAME_FRONTEND
+    - echo "Frontend Deployment Complete!"
+  dependencies:
+    - "Push"

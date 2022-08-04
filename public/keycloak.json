@@ -1,0 +1,8 @@
+{
+    "realm": "Cybercops",
+    "auth-server-url": "https://cybercops-accounts.herokuapp.com/auth/",
+    "ssl-required": "external",
+    "resource": "cybercops-client",
+    "public-client": true,
+    "confidential-port": 0
+}

@@ -1,0 +1,10 @@
+1. removed elements from header
+2. changed the footer
+3. removed description & done static tag/label 
+4. changed my file formate JS into JSX [ i saw you have used .JS so I didn't changed my file formate but now I have changed ]
+5. no more external resource Html everything locally
+6. Change my folder system like your example module etc
+7. added pagination
+8. showing total open issue dynamicly
+9. removed Milstones
+10. used dark header

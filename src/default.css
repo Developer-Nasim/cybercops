@@ -1,0 +1,117 @@
+/*   Theme default css */
+*{
+  margin: 0;
+  padding: 0;
+ }
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap'); 
+@import url('http://fonts.cdnfonts.com/css/red-rose');
+@font-face {
+  font-family: RedRose;
+  font-weight: 700;
+  src: url(./assets/font/RedRose-Bold.ttf);
+}
+@font-face {
+  font-family: RedRose;
+  font-weight: 400;
+  src: url(./assets/font/RedRose-Regular.ttf);
+}
+@font-face {
+  font-family: RedRose;
+  font-weight: 300;
+  src: url(./assets/font/RedRose-Light.otf);
+}
+@font-face {
+  font-family: Impact;
+  src: url(./assets/font/impact.ttf);
+}
+body {
+  font-family: RedRose;
+  font-weight: 400; 
+  color: #fff;
+  position: relative; 
+  min-height: 100vh;
+  font-size: 16px; 
+  background: #111111;
+}
+
+  
+button {
+  cursor: pointer; }
+
+a:focus,
+.button:focus {
+  text-decoration: none;
+  outline: none; }
+
+a:focus,
+a:hover {
+  color: inherit;
+  text-decoration: none; }
+
+a,
+button {
+  color: inherit;
+  outline: medium none; }
+
+button:focus, input:focus, input:focus, textarea, textarea:focus {
+  outline: 0; }
+
+ a{
+  text-decoration: none;
+ }
+ img{
+  max-width: 100%;
+ }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: RedRose; 
+  color: #fff;
+  margin-top: 0px; 
+  font-weight: 700;
+  text-transform: normal;
+ }
+
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a,
+h6 a {
+  color: inherit; }
+
+h1 {
+  font-size: 40px;
+  font-weight: 500; }
+
+h2 {
+  font-size: 35px; }
+
+h3 {
+  font-size: 28px; }
+
+h4 {
+  font-size: 22px; }
+
+h5 {
+  font-size: 18px; }
+
+h6 {
+  font-size: 16px; }
+
+ul {
+  margin: 0px;
+  padding: 0px; }
+
+li {
+  list-style: none; }
+
+ .padding{
+   padding-right: 0;
+ }
+ .css-19r6kue-MuiContainer-root{
+  padding: 0 !important;
+ }

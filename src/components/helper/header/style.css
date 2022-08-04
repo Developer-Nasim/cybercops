@@ -1,0 +1,152 @@
+header {
+    padding: 10px 0;
+    background: rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(240, 240, 240, 0.5);
+    backdrop-filter: blur(250px);
+}
+.logo label {
+    position: relative;
+    display: flex;
+    width: 270px;
+    border: 1px solid #B0B0B0;
+    border-radius: 5px;
+}
+
+.logo label img {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.logo label input {
+    display: block;
+    width: 100%;
+    height: 40px;
+    background: none;
+    border: none;
+    outline: none;
+    color: #fff;
+    padding: 8px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo > a {
+    margin-right: 18px;
+}
+
+.menus {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.menus ul {
+    display: flex;
+    align-items: center;
+}
+
+.menus ul li a {
+    font-family: Impact;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 17px;
+    text-transform: uppercase;
+/* identical to box height */
+    text-align: center;
+    letter-spacing: 0.05em;
+    color: rgba(255, 255, 255, 0.6);
+    transition: .3s;
+    margin-left: 40px;
+}
+
+.menus ul li a:hover,.menus ul li a.active {
+    color: #fff;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+}
+
+.actionBtns {
+    display: flex;
+    align-items: center;
+    margin-left: 30px;
+}
+
+.actionBtns .notif {
+    margin-right: 20px;
+}
+
+.header-actions .avtar {
+    position: relative;
+}
+
+.PrfileMoreMenu {
+    position: absolute;
+    right: 0;
+    top: 50px;
+    background: #444;
+    width: 150px;
+    border-radius: 5px;
+    visibility: hidden;
+    opacity: 0;
+    transition: .3s;
+}
+.header-actions .avtar:hover .PrfileMoreMenu {
+    opacity: 1;
+    visibility: visible;
+    top: 60px;
+}
+.PrfileMoreMenu ul {
+    display: block;
+}
+
+.PrfileMoreMenu ul li {
+    display: block;
+    text-align: left;
+}
+
+.PrfileMoreMenu ul li a {
+    text-align: left;
+    margin: 0;
+    padding: 10px 15px 10px 15px;
+    display: block;
+}
+.profile-btn {
+    display: flex;
+    align-items: center;
+    padding: 5px 0;
+    margin-left: 30px;
+    padding-left: 30px;
+    border-left: 1px solid white;
+    cursor: pointer;
+}
+.profile-btn img.profile-img {
+    width: 42px;
+    height: 42px;
+    object-fit: cover;
+    border-radius: 50%;
+    filter: drop-shadow(0px 2px 14px rgba(255, 255, 255, 0.15));
+    margin-right: 5px;
+}
+.actionBtns img{
+    cursor: pointer;
+    -webkit-user-drag: none;
+}
+
+
+
+
+
+
+
+
+
+
+

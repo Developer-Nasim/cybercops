@@ -1,0 +1,27 @@
+.users {
+    display: flex;
+    align-items: center;
+}
+
+.users img {
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    width: 39.32px;
+    height: 39.12px;
+    border-radius: 5px;
+    object-fit: cover;
+    overflow: hidden;
+    margin-left: -20px;
+}
+
+.users span {
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    width: 39.32px;
+    height: 39.12px;
+    background: #262626;
+    border-radius: 8px;
+    line-height: 39px;
+    text-align: center;
+    overflow: hidden;
+    margin-left: -20px;
+    transition: .3s;
+}
